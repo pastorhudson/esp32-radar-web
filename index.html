@@ -106,7 +106,7 @@
         > &mdash;
         Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
     </div>
-    <script>
+    <!--<script>
       document.querySelectorAll('input[name="type"]').forEach(radio =>
         radio.addEventListener("change", () => {
           const button = document.querySelector('esp-web-install-button');
@@ -114,7 +114,34 @@
           button.classList.remove('invisible');
         }
       ));
-    </script>
+    </script>-->
+      <script src="device_types.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const radios = document.querySelector('.radios');
+    deviceTypes.forEach(type => {
+      const listItem = document.createElement('li');
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.setAttribute('type', 'radio');
+      input.setAttribute('name', 'type');
+      input.value = type;
+      label.appendChild(input);
+      label.append(` ${type.replace('_', ' ').toUpperCase()}`); // Modify this to format the display name as you like
+      listItem.appendChild(label);
+      radios.appendChild(listItem);
+    });
+
+    document.querySelectorAll('input[name="type"]').forEach(radio =>
+      radio.addEventListener("change", () => {
+        const button = document.querySelector('esp-web-install-button');
+        button.manifest = `./manifest_${radio.value}.json`;
+        button.classList.remove('invisible');
+      })
+    );
+  });
+</script>
+
     </div>
   </body>
 </html>
