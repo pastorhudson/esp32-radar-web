@@ -1,0 +1,1 @@
+const deviceTypes = ["lilygo10_433", "lilygo10_868", "lilygo10_915", "lilygo14_433", "lilygo14_868", "lilygo14_915", "lilygo16_433", "lilygo16_868", "lilygo16_915", "lilygo20_433", "lilygo20_868", "lilygo20_915"];
