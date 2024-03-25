@@ -1,5 +1,5 @@
 {
-  "name": "ESP32 Radar for lilygo16_868",
+  "name": "ESP32 Radar for Lilygo TTGO v1.6 868mhz",
   "version": "3.02",
   "builds": [
     {
