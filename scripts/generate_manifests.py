@@ -33,7 +33,7 @@ def create_manifest_for_directory(subdir):
         manifest["builds"][0]["parts"].append(part)
 
     # Generating the manifest filename
-    manifest_filename = f"manifest_{device_name}.json"
+    manifest_filename = f"../manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
     print(f"Manifest for {device_name} created.")

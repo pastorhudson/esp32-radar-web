@@ -1,0 +1,31 @@
+{
+  "name": "ESP32 Radar for lilygo10_915",
+  "version": "3.02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_915\\1_bootloader.bin",
+          "offset": 4096
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_915\\2_default.bin",
+          "offset": 32768
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_915\\3_bootapp.bin",
+          "offset": 53248
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_915\\4_firmware.bin",
+          "offset": 65536
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_915\\5_fs.bin",
+          "offset": 1376256
+        }
+      ]
+    }
+  ]
+}

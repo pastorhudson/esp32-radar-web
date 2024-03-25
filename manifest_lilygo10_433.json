@@ -5,11 +5,26 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/1_bootloader.bin", "offset": 4096 },
-        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/2_default.bin", "offset": 32768 },
-        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/3_bootapp.bin", "offset": 53248 },
-        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/4_firmware.bin", "offset": 65536 },
-        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/5_fs.bin.bin", "offset": 1376256 }
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_433\\1_bootloader.bin",
+          "offset": 4096
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_433\\2_default.bin",
+          "offset": 32768
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_433\\3_bootapp.bin",
+          "offset": 53248
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_433\\4_firmware.bin",
+          "offset": 65536
+        },
+        {
+          "path": "firmware\\ESP32 Radar.302\\ESP32 Radar\\lilygo10_433\\5_fs.bin",
+          "offset": 1376256
+        }
       ]
     }
   ]
