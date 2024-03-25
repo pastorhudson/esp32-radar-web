@@ -9,43 +9,52 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="module" src="https://unpkg.com/esp-web-tools@8.0.1/dist/web/install-button.js?module"></script>
 </head>
-<body class="font-sans bg-gray-900 text-white">
-<div class="max-w-xl mx-auto px-4 py-6">
-    <h1 class="text-4xl font-bold">ESP32 Radar installer</h1>
-    <p class="mt-4">This is a tool for installing ESP32 Radar. For latest info, see the <a href="https://github.com/OlivierC-FR/ESP32-INAV-Radar/" class="text-blue-400 hover:text-blue-600">Esp32 Radar Github</a>.</p>
-    <p class="mt-2">Select your product</p>
-    <select id="deviceTypeSelect" name="type" class="mt-2 bg-gray-800 text-white border border-gray-700 rounded-md p-2">
-  <!-- Options will be dynamically added here -->
-    </select>
-    <div class="mt-4 flex justify-center">
-        <esp-web-install-button class="invisible"></esp-web-install-button>
-    </div>
-    <div class="mt-6 pt-6 border-t border-gray-700 text-center">
-        <a href="https://github.com/pastorhudson/esp32-radar-web" class="text-blue-400 hover:text-blue-600">ESP32 Radar Web Install</a> &mdash; Installer powered by <a href="https://esphome.github.io/esp-web-tools/" class="text-blue-400 hover:text-blue-600">ESP Web Tools</a>.
+<body class="font-sans bg-gray-900 text-white flex flex-col min-h-screen"> <!-- Adjusted for flex layout -->
+
+<div class="flex-grow"> <!-- Content grows to push footer down -->
+    <div class="max-w-xl mx-auto px-4 py-6"> <!-- Main content container -->
+        <h1 class="text-4xl font-bold">ESP32 Radar installer</h1>
+        <p class="mt-4">This is a tool for installing ESP32 Radar. For latest info, see the <a
+                href="https://github.com/OlivierC-FR/ESP32-INAV-Radar/" class="text-blue-400 hover:text-blue-600">Esp32
+            Radar Github</a>.</p>
+        <p class="mt-2">Select your product</p>
+        <select id="deviceTypeSelect" name="type"
+                class="mt-2 bg-gray-800 text-white border border-gray-700 rounded-md p-2">
+            <!-- Options will be dynamically added here -->
+        </select>
+        <div class="mt-4 flex justify-center">
+            <esp-web-install-button class="invisible"></esp-web-install-button>
+        </div>
     </div>
 </div>
-    <script src="device_types.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-  const selectElement = document.querySelector('#deviceTypeSelect');
-  deviceTypes.forEach(({value, label}) => {
-    const option = document.createElement('option');
-    option.value = value;  // The machine-readable value, like 'lilygo10_433'
-    option.textContent = label;  // The user-friendly label
-    selectElement.appendChild(option);
-  });
+<div class="text-center p-6 border-t border-gray-700"> <!-- Footer stays at bottom, inside body flex container -->
+    <a href="https://github.com/pastorhudson/esp32-radar-web" class="text-blue-400 hover:text-blue-600">ESP32 Radar Web
+        Install</a> &mdash; Installer powered by <a href="https://esphome.github.io/esp-web-tools/"
+                                                    class="text-blue-400 hover:text-blue-600">ESP Web Tools</a>.
+</div>
+<script src="device_types.js"></script>
 
-  selectElement.addEventListener("change", () => {
-    const button = document.querySelector('esp-web-install-button');
-    if(selectElement.value) {
-      button.manifest = `./manifest_${selectElement.value}.json`;
-      button.classList.remove('invisible');
-    }
-  });
-});
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const selectElement = document.querySelector('#deviceTypeSelect');
+        deviceTypes.forEach(({value, label}) => {
+            const option = document.createElement('option');
+            option.value = value;  // The machine-readable value, like 'lilygo10_433'
+            option.textContent = label;  // The user-friendly label
+            selectElement.appendChild(option);
+        });
 
-    </script>
+        selectElement.addEventListener("change", () => {
+            const button = document.querySelector('esp-web-install-button');
+            if (selectElement.value) {
+                button.manifest = `./manifest_${selectElement.value}.json`;
+                button.classList.remove('invisible');
+            }
+        });
+    });
+
+</script>
 
 </div>
 </body>
