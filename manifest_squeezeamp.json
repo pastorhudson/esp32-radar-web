@@ -1,16 +1,15 @@
 {
-  "name": "Squeezelite-ESP32 for SqueezeAmp",
-  "version": "1.1023",
-  "home_assistant_domain": "slim_player",
+  "name": "ESP32 Radar for lilygo10_433",
+  "version": "3.02",
   "builds": [
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "firmware/bootloader.bin", "offset": 4096 },
-        { "path": "firmware/partition-table.bin", "offset": 32768 },
-        { "path": "firmware/ota_data_initial.bin", "offset": 53248 },
-        { "path": "firmware/recovery.bin", "offset": 65536 },
-        { "path": "firmware/squeezeamp.bin", "offset": 1376256 }
+        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/1_bootloader.bin", "offset": 4096 },
+        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/2_default.bin", "offset": 32768 },
+        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/3_bootapp.bin", "offset": 53248 },
+        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/4_firmware.bin", "offset": 65536 },
+        { "path": "firmware/ESP32 Radar.302/ESP32 Radar/lilygo10_433/5_fs.bin.bin", "offset": 1376256 }
       ]
     }
   ]
