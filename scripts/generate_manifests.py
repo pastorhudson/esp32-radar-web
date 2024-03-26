@@ -1,7 +1,7 @@
 import os
 import json
 
-root_dir = '../FormationFlight-latest-release-bin-assets/'
+root_dir = '/app/www/FormationFlight-latest-release-bin-assets/'
 version = "3.02"
 device_types = []
 
