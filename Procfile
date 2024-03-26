@@ -1,2 +1,2 @@
-release: python www/scripts/update.py
+release: python scripts/update.py
 web: /app/start_nginx
