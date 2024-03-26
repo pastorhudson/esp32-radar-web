@@ -39,39 +39,40 @@
     I don't own this software. I'm just a guy volunteering to help the community. For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh">FormationFLight discord</a>.
 </div>
 <script src="/storage/device_types.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-
-        document.addEventListener("DOMContentLoaded", async () => {
+    document.addEventListener("DOMContentLoaded", async () => {
         // Existing device type selection logic
         const selectElement = document.querySelector('#deviceTypeSelect');
         deviceTypes.forEach(({value, label}) => {
-        const option = new Option(label, value);
-        selectElement.add(option);
-    });
+            const option = new Option(label, value);
+            selectElement.add(option);
+        });
 
         selectElement.addEventListener("change", () => {
-        const button = document.querySelector('esp-web-install-button');
-        if (selectElement.value) {
-        button.manifest = `./storage/manifest_${selectElement.value}.json`;
-        button.classList.remove('invisible');
-    }
-    });
+            const button = document.querySelector('esp-web-install-button');
+            if (selectElement.value) {
+                button.manifest = `./storage/manifest_${selectElement.value}.json`;
+                button.classList.remove('invisible');
+            }
+        });
 
         // Fetch and display the release notes
         try {
-        const releaseResponse = await fetch('./storage/FormationFlight-latest-release-bin-assets/release.txt'); // Update the path accordingly
-        const releaseText = await releaseResponse.text();
-        document.querySelector('release').textContent = releaseText;
-    } catch (error) {
-        console.error('Failed to fetch release notes:', error);
-        document.querySelector('release').textContent = 'Failed to load release notes.';
-    }
+            const releaseResponse = await fetch('./storage/your_repo_name-latest-release-bin-assets/release.txt'); // Update the path accordingly
+            const releaseText = await releaseResponse.text();
+            // Use marked to parse markdown content to HTML
+            const releaseHTML = marked.parse(releaseText);
+            // Insert the parsed markdown (now HTML) into the <release> tag
+            document.querySelector('release').innerHTML = releaseHTML;
+        } catch (error) {
+            console.error('Failed to fetch release notes:', error);
+            document.querySelector('release').textContent = 'Failed to load release notes.';
+        }
     });
 </script>
 
-
-</script>
 
 </body>
 </html>
