@@ -8,34 +8,35 @@ document.addEventListener('DOMContentLoaded', function() {
         const releaseNotesDiv = document.getElementById('release-notes');
 
         if (versionElement) versionElement.innerText = releaseData.version;
-        if (notesContentElement) notesContentElement.innerHTML = releaseData.notes;
+        if (notesContentElement) notesContentElement.innerHTML = markdownToHtml(releaseData.notes);
         if (releaseNotesDiv) releaseNotesDiv.style.display = 'none'; // Hide notes by default
     });
 
-    const toggleButton = document.getElementById('toggleNotes');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            const notesDiv = document.getElementById('release-notes');
-            if (notesDiv) {
-                if (notesDiv.style.display === 'none') {
-                    notesDiv.style.display = 'block';
-                    this.textContent = 'Hide Release Notes';
-                } else {
-                    notesDiv.style.display = 'none';
-                    this.textContent = 'Show Release Notes';
-                }
-            }
-        });
-    }
+    document.getElementById('toggleNotes').addEventListener('click', function() {
+        const notesDiv = document.getElementById('release-notes');
+        if (notesDiv) {
+            notesDiv.style.display = (notesDiv.style.display === 'none') ? 'block' : 'none';
+            this.textContent = (notesDiv.style.display === 'none') ? 'Show Release Notes' : 'Hide Release Notes';
+        }
+    });
 });
 
 function parseReleaseData(data) {
     const lines = data.split('\n');
     const version = lines[0];
-    let notes = '';
-    // Start from line 3 to skip version and initial empty line
-    for (let i = 2; i < lines.length; i++) {
-        notes += `<p>${lines[i]}</p>`;
-    }
+    let notes = lines.slice(2).join('\n'); // Join starting from the third line to keep line breaks
     return { version, notes: notes.trim() };
+}
+
+function markdownToHtml(markdown) {
+    // Convert Markdown links to HTML <a> tags
+    let html = markdown.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+    // Convert Markdown headers (## example) to HTML <h2> tags
+    html = html.replace(/^##\s?(.+)/gm, '<h2>$1</h2>');
+
+    // Replace line breaks with <br> for proper formatting
+    html = html.replace(/\n/g, '<br>');
+
+    return html;
 }
