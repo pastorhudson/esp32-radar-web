@@ -18,7 +18,6 @@ def format_label(file_name):
         parts = parts.replace('915', '915MHz')
         parts = parts.replace('2400', '2.4GHz')
 
-
     except Exception as e:
         parts = parts
     parts = parts.replace('.bin', '').split('_')
@@ -28,6 +27,8 @@ def format_label(file_name):
             parts[1] = f"Lilygo v{parts[1][6]}.{parts[1][7:]}"
         else:
             parts[1] = f"Lilygo"
+    elif 'Heltec' in parts[1]:
+        parts[4] = f"v{parts[4][0]}.{parts[4][1]}"
 
     additional_info = " ".join(parts[1:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
