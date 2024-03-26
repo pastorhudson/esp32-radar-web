@@ -2,7 +2,7 @@ import os
 import json
 
 root_dir = '/app/www/storage/FormationFlight-latest-release-bin-assets/'
-version = "3.02"
+version = "5.0"
 device_types = []
 
 
@@ -10,32 +10,38 @@ def format_label(file_name):
     # Extracts device type and additional info from the file name
     parts = file_name.replace('.bin', '').split('_')
     device_base = parts[1] if len(parts) > 1 else "unknown"
-    additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
 
-    # Formatting labels based on device type
     if 'lilygo' in file_name.lower():
-        version = "v2.0"  # Assuming all lilygo devices are version 2.0 for simplicity
-        frequency = additional_info.split('_')[-1]
-        # Formatting for different frequencies
-        if frequency == "433":
-            frequency_label = "433mhz"
-        elif frequency == "868":
-            frequency_label = "868mhz"
-        elif frequency == "915":
-            frequency_label = "915mhz"
-        else:
-            frequency_label = ""
-        label = f"Lora Lilygo {version} {frequency_label}"
+        try:
+            version_index = parts.index([part for part in parts if 'lilygo' in part.lower()][0])
+            version = f"v{parts[version_index][6:]}.{parts[version_index + 1]}"
+            frequency = parts[version_index + 2]
+            if frequency == "433":
+                frequency_label = "433mhz"
+            elif frequency == "868":
+                frequency_label = "868mhz"
+            elif frequency == "915":
+                frequency_label = "915mhz"
+            else:
+                frequency_label = ""
+            label = f"Lora Lilygo {version} {frequency_label}"
+        except (IndexError, ValueError):
+            # Fallback in case the expected pattern is not found
+            label = "Lora Lilygo Unknown Version"
     elif 'expresslrs' in file_name.lower():
-        # Assuming any expresslrs file with "2400" is 2.4ghz
+        # Assuming any expresslrs file with "2400" is for 2.4ghz
         if "2400" in file_name:
             label = "Express LRS Rx 2.4ghz"
         else:
-            label = f"Express LRS Rx {additional_info}"  # Default formatting
+            # Default expresslrs labeling
+            additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
+            label = f"Express LRS Rx {additional_info}"
     else:
+        additional_info = " ".join(parts[2:])  # Handles any additional info
         label = f"{device_base.capitalize()} {additional_info}".strip()
 
-    return label if label else file_name
+    return label
+
 
 
 def create_manifest(file_path):
