@@ -59,7 +59,7 @@
         });
 
         // Fetch and display the release notes
-        try {
+/*        try {
             const releaseResponse = await fetch('./storage/FormationFlight-latest-release-bin-assets/release.txt'); // Update the path accordingly
             const releaseText = await releaseResponse.text();
             // Use marked to parse markdown content to HTML
@@ -69,7 +69,7 @@
         } catch (error) {
             console.error('Failed to fetch release notes:', error);
             document.querySelector('release').textContent = 'Failed to load release notes.';
-        }
+        }*/
     });
 </script>
 
