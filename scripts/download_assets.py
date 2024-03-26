@@ -1,17 +1,21 @@
-import requests
 import os
+import json
+from urllib.request import urlopen, Request
 
 
 def download_latest_release_bin_assets(user, repo):
     # GitHub API URL for the latest release
     api_url = f"https://api.github.com/repos/{user}/{repo}/releases/latest"
 
-    # Send a GET request to the GitHub API
-    response = requests.get(api_url)
-    response.raise_for_status()  # Check for errors
+    # Create a request and open a connection to the GitHub API
+    request = Request(api_url)
+    with urlopen(request) as response:
+        # Ensure that the request was successful
+        if response.status != 200:
+            raise Exception(f"GitHub API request failed with status code {response.status}")
 
-    # Parse the JSON response
-    data = response.json()
+        # Parse the JSON response
+        data = json.loads(response.read().decode())
 
     # Directory to save the downloaded assets
     download_dir = f"../{repo}-latest-release-bin-assets"
@@ -26,21 +30,21 @@ def download_latest_release_bin_assets(user, repo):
         # Check if the file is a .bin file before downloading
         if asset_name.endswith('.bin'):
             print(f"Downloading {asset_name}...")
-            asset_response = requests.get(asset_url, stream=True)
-            asset_path = os.path.join(download_dir, asset_name)
 
-            with open(asset_path, 'wb') as f:
-                for chunk in asset_response.iter_content(chunk_size=8192):
+            # Create a request for the asset and open a connection
+            asset_request = Request(asset_url)
+            with urlopen(asset_request) as asset_response, open(os.path.join(download_dir, asset_name), 'wb') as f:
+                # Write the content to a file in chunks
+                while chunk := asset_response.read(8192):
                     f.write(chunk)
 
-            print(f"Downloaded {asset_name} to {asset_path}")
+            print(f"Downloaded {asset_name} to {os.path.join(download_dir, asset_name)}")
         else:
             print(f"Skipping {asset_name}, not a .bin file.")
 
     print("All .bin assets downloaded.")
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     # Example usage
-    # Replace 'FormationFlight' with the GitHub username and 'FormationFlight' with the repository name
     download_latest_release_bin_assets("FormationFlight", "FormationFlight")
