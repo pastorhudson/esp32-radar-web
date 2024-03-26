@@ -1,9 +1,10 @@
 import os
 import json
 
-root_dir = './FormationFlight-latest-release-bin-assets/'
+root_dir = '../FormationFlight-latest-release-bin-assets/'
 version = "3.02"
 device_types = []
+
 
 def format_label(file_name):
     # Extracts device type and additional info from the file name
@@ -12,6 +13,7 @@ def format_label(file_name):
     additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
     return label if label else file_name
+
 
 def create_manifest(file_path):
     file_name = os.path.basename(file_path)
@@ -29,17 +31,18 @@ def create_manifest(file_path):
         "name": f"FormationFlight for {label}",
         "version": version,
         "builds": [{"chipFamily": chipset, "parts": [{
-            "path": os.path.join("FormationFlight-latest-release-bin-assets", file_name),
+            "path": os.path.join("../FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
     }
 
-    manifest_filename = f"manifest_{device_name}.json"
+    manifest_filename = f"../manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
 
     device_types.append({"value": device_name, "label": label})
     print(f"Manifest for {device_name} ({label}) created.")
+
 
 for file_name in os.listdir(root_dir):
     file_path = os.path.join(root_dir, file_name)
@@ -47,5 +50,5 @@ for file_name in os.listdir(root_dir):
         create_manifest(file_path)
 
 js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
-with open("device_types.js", "w") as js_file:
+with open("../device_types.js", "w") as js_file:
     js_file.write(js_content)

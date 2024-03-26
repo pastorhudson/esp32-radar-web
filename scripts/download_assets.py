@@ -14,7 +14,7 @@ def download_latest_release_bin_assets(user, repo):
     data = response.json()
 
     # Directory to save the downloaded assets
-    download_dir = f"{repo}-latest-release-bin-assets"
+    download_dir = f"../{repo}-latest-release-bin-assets"
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
 
