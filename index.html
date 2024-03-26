@@ -6,7 +6,7 @@
     <meta name="description" content="Easily allow users to install Formation Flight firmware on the web."/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="color-scheme" content="dark light"/>
-        <link rel="icon" type="image/png" href="/images/logo.png"/>
+    <link rel="icon" type="image/png" href="/images/logo.png"/>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="module" src="https://unpkg.com/esp-web-tools@8.0.1/dist/web/install-button.js?module"></script>
 </head>
@@ -16,11 +16,12 @@
     <div class="max-w-xl mx-auto px-4 py-6"> <!-- Main content container -->
         <h1 class="text-4xl font-bold">Formation Flight Web Installer</h1>
         <p class="mt-4">This is a tool for installing FormationFlight. For latest release info, see the <a
-                href="https://github.com/FormationFlight/FormationFlight/releases/latest" class="text-blue-400 hover:text-blue-600">FormationFlight Github</a>.
-            Documentation can be found at <a href="https://formationflight.org">formationflight.org</a> </p>
+                href="https://github.com/FormationFlight/FormationFlight/releases/latest"
+                class="text-blue-400 hover:text-blue-600">FormationFlight Github</a>.
+            Documentation can be found at <a href="https://formationflight.org">formationflight.org</a></p>
 
         <h2>Work In Progress. . . USE AT Your Own Risk . . .</h2>
-        <release></release>
+
         <p class="mt-2">Select your target</p>
         <select id="deviceTypeSelect" name="type"
                 class="mt-2 bg-gray-800 text-white border border-gray-700 rounded-md p-2">
@@ -33,10 +34,11 @@
 </div>
 
 <div class="text-center p-6 border-t border-gray-600"> <!-- Footer stays at bottom, inside body flex container -->
-    <a href="https://github.com/pastorhudson/formationflight-web-installer" class="text-blue-400 hover:text-blue-600">FormationFLight Web
+    <a href="https://github.com/pastorhudson/formationflight-web-installer" class="text-blue-400 hover:text-blue-600">Formation
+        Flight Web
         Install</a> &mdash; Installer powered by <a href="https://esphome.github.io/esp-web-tools/"
                                                     class="text-blue-400 hover:text-blue-600">ESP Web Tools</a>.
-    I don't own this software. I'm just a guy volunteering to help the community. For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh">FormationFLight discord</a>.
+    For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh">FormationFLight discord</a>.
 </div>
 <script src="/storage/device_types.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -58,18 +60,7 @@
             }
         });
 
-        // Fetch and display the release notes
-/*        try {
-            const releaseResponse = await fetch('./storage/FormationFlight-latest-release-bin-assets/release.txt'); // Update the path accordingly
-            const releaseText = await releaseResponse.text();
-            // Use marked to parse markdown content to HTML
-            const releaseHTML = marked.parse(releaseText);
-            // Insert the parsed markdown (now HTML) into the <release> tag
-            document.querySelector('release').innerHTML = releaseHTML;
-        } catch (error) {
-            console.error('Failed to fetch release notes:', error);
-            document.querySelector('release').textContent = 'Failed to load release notes.';
-        }*/
+
     });
 </script>
 
