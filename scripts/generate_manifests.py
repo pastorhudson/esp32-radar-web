@@ -2,14 +2,19 @@ import os
 import json
 
 root_dir = '/app/www/storage/FormationFlight-latest-release-bin-assets/'
-version = "3.02"
+version = "5.0"
 device_types = []
 
 
 def format_label(file_name):
     # Extracts device type and additional info from the file name
-    parts = file_name.replace('.bin', '').split('_')
-    device_base = parts[1] if len(parts) > 1 else "unknown"
+    try:
+        parts = file_name.replace('diy_', '')
+    except Exception as e:
+        parts = file_name
+
+    parts = parts.replace('.bin', '').split('_')
+    device_base = parts[0] if len(parts) > 1 else "unknown"
     additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
     return label if label else file_name
