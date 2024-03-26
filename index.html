@@ -46,7 +46,7 @@
             Documentation can be found at <a href="https://formationflight.org" class="text-blue-400 hover:text-blue-600">FormationFlight.org</a></p>
 
         <h2>Work In Progress. . . USE AT Your Own Risk . . .</h2>
-        <h1 id="release-version">Loading Release Version...</h1>
+    <h1 id="release-version">Loading Release Version...</h1>
         <p class="mt-2">Select your target</p>
         <select id="deviceTypeSelect" name="type"
                 class="mt-2  text-white border border-gray-700 rounded-md p-2" style="background-color: #1b1e25;">
@@ -55,11 +55,12 @@
         <div class="mt-4 flex justify-center">
             <esp-web-install-button class="invisible"></esp-web-install-button>
         </div>
-    <div id="release-notes" style="display:none;">
-<!--        <h2>Release Notes:</h2>-->
-        <div id="notes-content"></div>
+
+            <button id="toggleNotes">Show Release Notes</button>
+
     </div>
-    <button id="toggleNotes">Show Release Notes</button>
+        <div id="release-notes" style="display:none;">
+        <div id="notes-content"></div>
     </div>
 
 </div>
