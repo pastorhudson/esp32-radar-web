@@ -69,8 +69,8 @@ def generate_manifests():
         file_path = os.path.join(root_dir, file_name)
         if os.path.isfile(file_path) and file_name.endswith('.bin'):
             create_manifest(file_path)
-
-    js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
+    sorted_devices = sorted(device_types, key=lambda x: x['label'])
+    js_content = "const deviceTypes = " + json.dumps(sorted_devices) + ";"
     with open("/app/www/storage/device_types.js", "w") as js_file:
         js_file.write(js_content)
 
