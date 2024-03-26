@@ -1,1 +1,1 @@
-release: python download_assets.py && python generate_manifests.py
+release: python scripts/download_assets.py && python scripts/generate_manifests.py
