@@ -3,7 +3,7 @@
   "version": "3.02",
   "builds": [
     {
-      "chipFamily": "ESP32",
+      "chipFamily": "",
       "parts": [
         {
           "path": "FormationFlight-latest-release-bin-assets\\expresslrs_rx_915.bin",

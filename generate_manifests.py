@@ -17,10 +17,18 @@ def create_manifest(file_path):
     file_name = os.path.basename(file_path)
     device_name, _ = os.path.splitext(file_name)
     label = format_label(file_name)
+    chipset = ""
+
+    if any(substring in label for substring in ['8266']):
+        chipset = "ESP8266"
+    elif any(substring in label for substring in ['32', 'lilygo']):
+        chipset = 'ESP32'
+    elif any(substring in label for substring in ['expresslrs']):
+        chipset = "ESP8285"
     manifest = {
         "name": f"FormationFlight for {label}",
         "version": version,
-        "builds": [{"chipFamily": "ESP32", "parts": [{
+        "builds": [{"chipFamily": chipset, "parts": [{
             "path": os.path.join("FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
