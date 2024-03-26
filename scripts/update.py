@@ -1,5 +1,5 @@
-from scripts.download_assets import download_latest_release_bin_assets
-from scripts.generate_manifests import generate_manifests
+from download_assets import download_latest_release_bin_assets
+from generate_manifests import generate_manifests
 
 
 def update():
