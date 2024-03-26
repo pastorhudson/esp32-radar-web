@@ -1,7 +1,7 @@
 import os
 import json
 
-root_dir = '/app/www/FormationFlight-latest-release-bin-assets/'
+root_dir = '/app/www/storage/FormationFlight-latest-release-bin-assets/'
 version = "3.02"
 device_types = []
 
@@ -36,7 +36,7 @@ def create_manifest(file_path):
         }]}]
     }
 
-    manifest_filename = f"/app/www/manifest_{device_name}.json"
+    manifest_filename = f"/app/www/storage/manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
 
@@ -52,7 +52,7 @@ def generate_manifests():
             create_manifest(file_path)
 
     js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
-    with open("/app/www/device_types.js", "w") as js_file:
+    with open("/app/www/storage/device_types.js", "w") as js_file:
         js_file.write(js_content)
 
 
