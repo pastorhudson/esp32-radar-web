@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "firmware\\FormationFlight.302\\expresslrs_rx_868.bin",
+          "path": "FormationFlight-latest-release-bin-assets\\expresslrs_rx_868.bin",
           "offset": 0
         }
       ]

@@ -21,7 +21,7 @@ def create_manifest(file_path):
         "name": f"FormationFlight for {label}",
         "version": version,
         "builds": [{"chipFamily": "ESP32", "parts": [{
-            "path": os.path.join("firmware", "FormationFlight." + version.replace(".", ""), file_name),
+            "path": os.path.join("FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
     }

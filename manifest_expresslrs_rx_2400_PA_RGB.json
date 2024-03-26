@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "firmware\\FormationFlight.302\\expresslrs_rx_2400_PA_RGB.bin",
+          "path": "FormationFlight-latest-release-bin-assets\\expresslrs_rx_2400_PA_RGB.bin",
           "offset": 0
         }
       ]

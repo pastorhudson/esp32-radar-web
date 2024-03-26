@@ -6,7 +6,7 @@
       "chipFamily": "ESP8266",
       "parts": [
         {
-          "path": "firmware\\FormationFlight.302\\diy_ESPNOW_esp8266.bin",
+          "path": "FormationFlight-latest-release-bin-assets\\diy_ESPNOW_esp8266.bin",
           "offset": 0
         }
       ]

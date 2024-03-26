@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "firmware\\FormationFlight.302\\diy_ESPNOW_lolin_d32.bin",
+          "path": "FormationFlight-latest-release-bin-assets\\diy_ESPNOW_lolin_d32.bin",
           "offset": 0
         }
       ]

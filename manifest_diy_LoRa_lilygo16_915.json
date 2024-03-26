@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "firmware\\FormationFlight.302\\diy_LoRa_lilygo16_915.bin",
+          "path": "FormationFlight-latest-release-bin-assets\\diy_LoRa_lilygo16_915.bin",
           "offset": 0
         }
       ]
