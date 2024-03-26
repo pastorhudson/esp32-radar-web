@@ -31,7 +31,7 @@ def create_manifest(file_path):
         "name": f"FormationFlight for {label}",
         "version": version,
         "builds": [{"chipFamily": chipset, "parts": [{
-            "path": os.path.join("/app/www/storage/FormationFlight-latest-release-bin-assets", file_name),
+            "path": os.path.join("/storage/FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
     }
