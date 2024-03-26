@@ -2,6 +2,7 @@ import os
 import json
 from urllib.request import urlopen, Request
 
+
 def download_latest_release_bin_assets(user, repo):
     # GitHub API URL for the latest release
     api_url = f"https://api.github.com/repos/{user}/{repo}/releases/latest"
@@ -52,6 +53,7 @@ def download_latest_release_bin_assets(user, repo):
             print(f"Skipping {asset_name}, not a .bin file.")
 
     print("All .bin assets downloaded and release info saved.")
+
 
 if __name__ == "__main__":
     # Example usage
