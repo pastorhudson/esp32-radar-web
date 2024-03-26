@@ -60,7 +60,7 @@
 
         // Fetch and display the release notes
         try {
-            const releaseResponse = await fetch('./storage/your_repo_name-latest-release-bin-assets/release.txt'); // Update the path accordingly
+            const releaseResponse = await fetch('./storage/FormationFlight-latest-release-bin-assets/release.txt'); // Update the path accordingly
             const releaseText = await releaseResponse.text();
             // Use marked to parse markdown content to HTML
             const releaseHTML = marked.parse(releaseText);
