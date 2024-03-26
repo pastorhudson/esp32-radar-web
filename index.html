@@ -34,7 +34,7 @@
                                                     class="text-blue-400 hover:text-blue-600">ESP Web Tools</a>.
     I don't own this software. I'm just a guy volunteering to help the community. For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh">FormationFLight discord</a>.
 </div>
-<script src="device_types.js"></script>
+<script src="/storage/device_types.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -49,7 +49,7 @@
         selectElement.addEventListener("change", () => {
             const button = document.querySelector('esp-web-install-button');
             if (selectElement.value) {
-                button.manifest = `./manifest_${selectElement.value}.json`;
+                button.manifest = `./storage/manifest_${selectElement.value}.json`;
                 button.classList.remove('invisible');
             }
         });
