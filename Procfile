@@ -1,2 +1,2 @@
-release: python www/scripts/download_assets.py && python www/scripts/generate_manifests.py
+release: python www/scripts/update.py
 web: /app/start_nginx
