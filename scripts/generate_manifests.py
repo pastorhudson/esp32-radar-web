@@ -15,7 +15,7 @@ def format_label(file_name):
 
     parts = parts.replace('.bin', '').split('_')
     device_base = parts[0] if len(parts) > 1 else "unknown"
-    additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
+    additional_info = " ".join(parts[1:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
     return label if label else file_name
 
