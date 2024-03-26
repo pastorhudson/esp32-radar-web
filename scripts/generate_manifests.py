@@ -12,12 +12,22 @@ def format_label(file_name):
         parts = file_name.replace('diy_', '')
     except Exception as e:
         parts = file_name
+    try:
+        parts = parts.replace('433', '433MHz')
+        parts = parts.replace('868', '868MHz')
+        parts = parts.replace('915', '915MHz')
+        parts = parts.replace('2400', '2.4GHz')
 
+
+    except Exception as e:
+        parts = parts
     parts = parts.replace('.bin', '').split('_')
     device_base = parts[0] if len(parts) > 1 else "unknown"
-    if 'lilygo' in parts[1]:
-        if len(parts[1]) >= 5:
+    if 'lilygo' in parts[1] and 't_beam' not in parts[1]:
+        if len(parts[1]) > 6:
             parts[1] = f"Lilygo v{parts[1][6]}.{parts[1][7:]}"
+        else:
+            parts[1] = f"Lilygo"
 
     additional_info = " ".join(parts[1:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
