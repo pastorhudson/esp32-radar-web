@@ -1,6 +1,3 @@
-import os
-os.system("pip install -r requirements.txt")
-
 from www.scripts.download_assets import download_latest_release_bin_assets
 from www.scripts.generate_manifests import generate_manifests
 
