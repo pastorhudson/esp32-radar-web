@@ -10,11 +10,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="module" src="https://unpkg.com/esp-web-tools@8.0.1/dist/web/install-button.js?module"></script>
 </head>
-<body class="font-sans bg-gray-900 text-white flex flex-col min-h-screen"> <!-- Adjusted for flex layout -->
-
+<body class="font-sans text-white flex flex-col min-h-screen" style="background-color: #2e303e;"> <!-- Adjusted for flex layout -->
+    <div class="w-full bg-gray-800 px-4 py-4 flex items-center justify-center border-b border-gray-700" style="background-color: #4051b5;">
+        <h1 class="text-3xl font-bold">Formation Flight Web Installer</h1>
+    </div>
 <div class="flex-grow"> <!-- Content grows to push footer down -->
     <div class="max-w-xl mx-auto px-4 py-6"> <!-- Main content container -->
-        <h1 class="text-4xl font-bold">Formation Flight Web Installer</h1>
+<!--        <h1 class="text-4xl font-bold">Formation Flight Web Installer</h1>-->
         <p class="mt-4">This is a tool for installing FormationFlight. For latest release info, see the <a
                 href="https://github.com/FormationFlight/FormationFlight/releases/latest"
                 class="text-blue-400 hover:text-blue-600">FormationFlight Github</a>.
@@ -24,7 +26,7 @@
 
         <p class="mt-2">Select your target</p>
         <select id="deviceTypeSelect" name="type"
-                class="mt-2 bg-gray-800 text-white border border-gray-700 rounded-md p-2">
+                class="mt-2  text-white border border-gray-700 rounded-md p-2" style="background-color: #3f50b4;">
             <!-- Options will be dynamically added here -->
         </select>
         <div class="mt-4 flex justify-center">
@@ -33,12 +35,12 @@
     </div>
 </div>
 
-<div class="text-center p-6 border-t border-gray-600"> <!-- Footer stays at bottom, inside body flex container -->
+<div class="text-center p-6 border-t" style="border-color: #3f50b4; background-color: #2e303e;"> <!-- Footer stays at bottom, inside body flex container -->
     <a href="https://github.com/pastorhudson/formationflight-web-installer" class="text-blue-400 hover:text-blue-600">Formation
         Flight Web
         Install</a> &mdash; Installer powered by <a href="https://esphome.github.io/esp-web-tools/"
                                                     class="text-blue-400 hover:text-blue-600">ESP Web Tools</a>.
-    For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh">FormationFLight discord</a>.
+    For Support checkout the awesome <a href="https://discord.gg/npaX3VxQjh" class="text-blue-400 hover:text-blue-600">FormationFLight discord</a>.
 </div>
 <script src="/storage/device_types.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
