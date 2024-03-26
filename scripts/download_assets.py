@@ -39,7 +39,8 @@ def download_latest_release_bin_assets(user, repo):
 
     print("All .bin assets downloaded.")
 
+if __name__ == "__main__":
 
-# Example usage
-# Replace 'FormationFlight' with the GitHub username and 'FormationFlight' with the repository name
-download_latest_release_bin_assets("FormationFlight", "FormationFlight")
+    # Example usage
+    # Replace 'FormationFlight' with the GitHub username and 'FormationFlight' with the repository name
+    download_latest_release_bin_assets("FormationFlight", "FormationFlight")

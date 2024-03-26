@@ -44,11 +44,17 @@ def create_manifest(file_path):
     print(f"Manifest for {device_name} ({label}) created.")
 
 
-for file_name in os.listdir(root_dir):
-    file_path = os.path.join(root_dir, file_name)
-    if os.path.isfile(file_path) and file_name.endswith('.bin'):
-        create_manifest(file_path)
+def generate_manifests():
 
-js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
-with open("../device_types.js", "w") as js_file:
-    js_file.write(js_content)
+    for file_name in os.listdir(root_dir):
+        file_path = os.path.join(root_dir, file_name)
+        if os.path.isfile(file_path) and file_name.endswith('.bin'):
+            create_manifest(file_path)
+
+    js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
+    with open("../device_types.js", "w") as js_file:
+        js_file.write(js_content)
+
+
+if __name__ == "__main__":
+    generate_manifests()
