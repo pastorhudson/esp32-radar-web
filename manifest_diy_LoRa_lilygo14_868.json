@@ -1,0 +1,15 @@
+{
+  "name": "FormationFlight for Lora lilygo14 868",
+  "version": "3.02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware\\FormationFlight.302\\diy_LoRa_lilygo14_868.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

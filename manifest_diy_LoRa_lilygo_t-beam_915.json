@@ -1,0 +1,15 @@
+{
+  "name": "FormationFlight for Lora lilygo t-beam 915",
+  "version": "3.02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware\\FormationFlight.302\\diy_LoRa_lilygo_t-beam_915.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

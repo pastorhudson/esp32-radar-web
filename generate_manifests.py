@@ -1,40 +1,30 @@
 import os
 import json
 
-root_dir = './firmware/ESP32 Radar'
+root_dir = './FormationFlight-latest-release-bin-assets/'
 version = "3.02"
-device_types = []  # This will now hold dictionaries with 'value' and 'label' keys
+device_types = []
 
+def format_label(file_name):
+    # Extracts device type and additional info from the file name
+    parts = file_name.replace('.bin', '').split('_')
+    device_base = parts[1] if len(parts) > 1 else "unknown"
+    additional_info = " ".join(parts[2:])  # Handles any additional info like frequency
+    label = f"{device_base.capitalize()} {additional_info}".strip()
+    return label if label else file_name
 
-def format_label(device_name):
-    # Assuming device_name format is like 'lilygo10_433'
-    parts = device_name.split('_')
-    if len(parts) == 2 and parts[0].startswith('lilygo'):
-        version = parts[0][6:7] + '.' + parts[0][7:]
-        mhz = parts[1]
-        return f"Lilygo TTGO v{version} {mhz}mhz"
-    return device_name  # Default case
-
-
-def create_manifest_for_directory(subdir):
-    device_name = os.path.basename(subdir)
-    label = format_label(device_name)
+def create_manifest(file_path):
+    file_name = os.path.basename(file_path)
+    device_name, _ = os.path.splitext(file_name)
+    label = format_label(file_name)
     manifest = {
-        "name": f"ESP32 Radar for {label}",
+        "name": f"FormationFlight for {label}",
         "version": version,
-        "builds": [{"chipFamily": "ESP32", "parts": []}]
+        "builds": [{"chipFamily": "ESP32", "parts": [{
+            "path": os.path.join("firmware", "FormationFlight." + version.replace(".", ""), file_name),
+            "offset": 0  # Assuming a single binary without specific offsets
+        }]}]
     }
-
-    offsets = [4096, 32768, 53248, 65536, 1376256]
-    file_list = sorted(os.listdir(subdir))
-
-    for i, file_name in enumerate(file_list):
-        part = {
-            "path": os.path.join("firmware", "ESP32 Radar." + version.replace(".", ""), "ESP32 Radar", device_name,
-                                 file_name),
-            "offset": offsets[i]
-        }
-        manifest["builds"][0]["parts"].append(part)
 
     manifest_filename = f"manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
@@ -43,11 +33,10 @@ def create_manifest_for_directory(subdir):
     device_types.append({"value": device_name, "label": label})
     print(f"Manifest for {device_name} ({label}) created.")
 
-
-for subdir_name in os.listdir(root_dir):
-    subdir_path = os.path.join(root_dir, subdir_name)
-    if os.path.isdir(subdir_path):
-        create_manifest_for_directory(subdir_path)
+for file_name in os.listdir(root_dir):
+    file_path = os.path.join(root_dir, file_name)
+    if os.path.isfile(file_path) and file_name.endswith('.bin'):
+        create_manifest(file_path)
 
 js_content = "const deviceTypes = " + json.dumps(device_types) + ";"
 with open("device_types.js", "w") as js_file:

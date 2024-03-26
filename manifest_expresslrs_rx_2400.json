@@ -1,0 +1,15 @@
+{
+  "name": "FormationFlight for Rx 2400",
+  "version": "3.02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware\\FormationFlight.302\\expresslrs_rx_2400.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

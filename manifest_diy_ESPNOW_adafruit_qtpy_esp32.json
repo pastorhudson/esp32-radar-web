@@ -1,0 +1,15 @@
+{
+  "name": "FormationFlight for Espnow adafruit qtpy esp32",
+  "version": "3.02",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware\\FormationFlight.302\\diy_ESPNOW_adafruit_qtpy_esp32.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
