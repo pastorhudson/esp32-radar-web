@@ -15,6 +15,10 @@ def format_label(file_name):
 
     parts = parts.replace('.bin', '').split('_')
     device_base = parts[0] if len(parts) > 1 else "unknown"
+    if 'lilygo' in parts[1]:
+        if len(parts[1]) >= 5:
+            parts[1] = f"Lilygo v{parts[1][6]}.{parts[1][:7]}"
+
     additional_info = " ".join(parts[1:])  # Handles any additional info like frequency
     label = f"{device_base.capitalize()} {additional_info}".strip()
     return label if label else file_name
