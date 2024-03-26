@@ -1,8 +1,8 @@
-# ESP32 Radar Installer
+# FormationFLight Web Installer
 
-This is an installer website for [ESP32 Radar](https://github.com/OlivierC-FR/ESP32-INAV-Radar).
+This is an installer website for [FormationFLight](https://formationflight.org/).
 
-[RC Groups Page With Instructions](https://github.com/OlivierC-FR/ESP32-INAV-Radar)
+[FormationFlight Latest Release](https://github.com/FormationFlight/FormationFlight/releases/latest)
 
 
 [Visit installer website](https://esp32.com)
