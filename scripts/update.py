@@ -98,12 +98,12 @@ def create_manifest(file_path):
         "name": f"FormationFlight for {label}",
         "version": version,
         "builds": [{"chipFamily": chipset, "parts": [{
-            "path": os.path.join("/app/storage/FormationFlight-latest-release-bin-assets", file_name),
+            "path": os.path.join("/storage/FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
     }
 
-    manifest_filename = f"/app/storage/manifest_{device_name}.json"
+    manifest_filename = f"/storage/manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
 
