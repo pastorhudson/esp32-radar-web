@@ -90,7 +90,7 @@ def create_manifest(file_path):
     elif any(substring in label for substring in ['32', 'lilygo']):
         chipset = 'ESP32'
     elif any(substring in label for substring in ['expresslrs']):
-        chipset = "ESP8285"
+        chipset = "ESP8266"
     manifest = {
         "name": f"FormationFlight for {label}",
         "version": version,
