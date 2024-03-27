@@ -4,7 +4,7 @@ from urllib.request import urlopen, Request
 
 root_dir = '/app/storage/FormationFlight-latest-release-bin-assets/'
 version = "5.0"
-device_types = [{"value": "none", "label": "->Select Target"}]  # Initialize with "Select Target"
+device_types = [{"value": "none", "label": "-> Select Target"}]  # Initialize with "Select Target"
 
 def format_label(file_name):
     """
