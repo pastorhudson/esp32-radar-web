@@ -52,12 +52,12 @@ def create_manifest(file_path):
         "name": f"FormationFlight for {label}",
         "version": version,
         "builds": [{"chipFamily": chipset, "parts": [{
-            "path": os.path.join("/app/storage/esp32radar.com/FormationFlight-latest-release-bin-assets", file_name),
+            "path": os.path.join("/app/storage/FormationFlight-latest-release-bin-assets", file_name),
             "offset": 0  # Assuming a single binary without specific offsets
         }]}]
     }
 
-    manifest_filename = f"/app/storage/esp32radar.com/manifest_{device_name}.json"
+    manifest_filename = f"/app/storage/manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
 
@@ -72,7 +72,7 @@ def generate_manifests():
             create_manifest(file_path)
     sorted_devices = sorted(device_types, key=lambda x: x['label'])
     js_content = "const deviceTypes = " + json.dumps(sorted_devices) + ";"
-    with open("/app/storage/esp32radar.com/device_types.js", "w") as js_file:
+    with open("/app/storage/device_types.js", "w") as js_file:
         js_file.write(js_content)
 
 
@@ -95,7 +95,7 @@ def download_latest_release_bin_assets(user, repo):
     release_notes = data.get('body', 'No release notes available.')
 
     # Directory to save the downloaded assets
-    download_dir = f"/app/storage/esp32radar.com/{repo}-latest-release-bin-assets"
+    download_dir = f"/app/storage/{repo}-latest-release-bin-assets"
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
 
