@@ -29,14 +29,17 @@ function parseReleaseData(data) {
 }
 
 function markdownToHtml(markdown) {
+    // Convert standalone URLs into clickable links
+    markdown = markdown.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$1" target="_blank" class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out">$1</a>');
+
     // Convert Markdown links to HTML <a> tags with Tailwind styling
     let html = markdown.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out">$1</a>');
 
+    // Convert text surrounded by ** to bold with Tailwind styling (optional)
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold">$1</strong>');
+
     // Convert Markdown headers (## example) to HTML <h2> tags with Tailwind styling
     html = html.replace(/^##\s?(.+)/gm, '<h2 class="text-2xl font-semibold mt-4 mb-2">$1</h2>');
-
-    // Convert **bold** text to HTML <strong> with Tailwind styling
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>');
 
     // Convert Markdown bulleted lists to HTML <ul> and <li> with Tailwind styling
     html = html.replace(/(\n\*\s.+(?:\n\*.+)*)/g, function(match) {
@@ -45,11 +48,7 @@ function markdownToHtml(markdown) {
         return `<ul class="list-outside pl-5 mt-2 mb-2">${listItems}</ul>`;
     });
 
-    // Replace remaining line breaks with <br> tags for proper formatting, if needed
-    // Commenting out the <br> replacement as handling spacing with CSS classes or <p> tags is recommended for consistency with Tailwind's utility-first approach.
-    // html = html.replace(/\n/g, '<br>');
+    // Optionally, handle line breaks with spacing instead of <br>, considering Tailwind and modern web practices
 
     return html;
 }
-
-
