@@ -103,7 +103,7 @@ def create_manifest(file_path):
         }]}]
     }
 
-    manifest_filename = f"/storage/manifest_{device_name}.json"
+    manifest_filename = f"/app/storage/manifest_{device_name}.json"
     with open(manifest_filename, 'w') as manifest_file:
         json.dump(manifest, manifest_file, indent=2)
 
