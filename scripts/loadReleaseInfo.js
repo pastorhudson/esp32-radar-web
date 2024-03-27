@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+/**
+ * Parses the release data and extracts the version and release notes.
+ *
+ * @param {string} data - The release data to be parsed.
+ * @returns {Object} An object containing the version and release notes.
+ * - version: The version of the release.
+ * - notes: The release notes, trimmed to remove leading and trailing whitespace.
+ */
 function parseReleaseData(data) {
     const lines = data.split('\n');
     const version = lines[0];
@@ -28,6 +36,12 @@ function parseReleaseData(data) {
     return { version, notes: notes.trim() };
 }
 
+/**
+ * Converts markdown text to HTML with Tailwind styling.
+ *
+ * @param {string} markdown - The markdown text to convert.
+ * @returns {string} - The converted HTML output.
+ */
 function markdownToHtml(markdown) {
     // Convert standalone URLs into clickable links
     markdown = markdown.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$1" target="_blank" class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out">$1</a>');
