@@ -49,6 +49,83 @@
             width: 100%; /* Ensures content uses the full width of the parent */
             text-align: left; /* Centers the text inside the notes-content */
         }
+
+        body {
+            background: #eee;
+            /* This is just a helper in case the element has a transparent background or white colors. */
+        }
+
+        @media (prefers-reduced-motion) {
+
+            *, ::after, ::before {
+                transition: none 0s ease 0s !important;
+            }
+        }
+
+        a {
+            text-decoration: none currentcolor solid;
+            word-break: break-word;
+        }
+
+        .inherited-styles-for-exported-element {
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        a::before {
+            transition: color 125ms;
+        }
+
+        svg {
+            height: auto;
+            max-width: 100%;
+        }
+
+        .md-button {
+            border-image: none 100% 1 0 stretch;
+            border-radius: .1rem;
+            border-style: solid;
+            border-width: .1rem;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 700;
+            padding: .625em 2em;
+            transition: color 125ms, background-color 125ms, border-color 125ms;
+        }
+
+        .md-button--primary {
+            background-color: #4051b5;
+            border-color: #526cfe;
+            color: #fff;
+        }
+
+        .md-button:focus, .md-button:hover {
+            background-color: #526cfe;
+            border-color: #526cfe;
+            color: #fff;
+        }
+
+        :target {
+            scroll-margin-top: 0;
+        }
+
+        .twemoji {
+            display: inline-flex;
+            height: 1.125em;
+            vertical-align: text-top;
+        }
+
+        .twemoji svg {
+            fill: currentcolor;
+            max-height: 100%;
+            width: 1.125em;
+        }
+
+        html {
+            font-size: 20px;
+            /* This is IMPORTANT since some copied values use "REM" units */
+        }
     </style>
 
 </head>
@@ -76,7 +153,9 @@
             <esp-web-install-button class="invisible"></esp-web-install-button>
         </div>
 
-        <button id="toggleNotes">Show Release Notes</button>
+        <!--        <button id="toggleNotes">Show Release Notes</button>-->
+        <button id="toggleNotes" class="md-button md-button--primary inherited-styles-for-exported-element">Show Release
+            Notes<span class="twemoji"></span></button>
 
     </div>
     <div id="release-notes" style="display:none;">
