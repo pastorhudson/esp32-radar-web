@@ -68,7 +68,7 @@
             max-width: 100%;
         }
 
-        .md-button .install-supported {
+        .md-button, .install-supported {
             border-image: none 100% 1 0 stretch;
             border-radius: .1rem;
             border-style: solid;
@@ -80,13 +80,13 @@
             transition: color 125ms, background-color 125ms, border-color 125ms;
         }
 
-        .md-button--primary .install-supported {
+        .md-button--primary, .install-supported {
             background-color: #4051b5;
             border-color: #526cfe;
             color: #fff;
         }
 
-        .md-button:focus, .md-button:hover .install-supported:focus .install-supported:hover {
+        .md-button:focus, .md-button:hover, .install-supported:focus, .install-supported:hover {
             background-color: #526cfe;
             border-color: #526cfe;
             color: #fff;
