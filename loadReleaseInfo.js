@@ -29,14 +29,27 @@ function parseReleaseData(data) {
 }
 
 function markdownToHtml(markdown) {
-    // Convert Markdown links to HTML <a> tags
-    let html = markdown.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    // Convert Markdown links to HTML <a> tags with Tailwind styling
+    let html = markdown.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" class="text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out">$1</a>');
 
-    // Convert Markdown headers (## example) to HTML <h2> tags
-    html = html.replace(/^##\s?(.+)/gm, '<h2>$1</h2>');
+    // Convert Markdown headers (## example) to HTML <h2> tags with Tailwind styling
+    html = html.replace(/^##\s?(.+)/gm, '<h2 class="text-2xl font-semibold mt-4 mb-2">$1</h2>');
 
-    // Replace line breaks with <br> for proper formatting
-    html = html.replace(/\n/g, '<br>');
+    // Convert **bold** text to HTML <strong> with Tailwind styling
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>');
+
+    // Convert Markdown bulleted lists to HTML <ul> and <li> with Tailwind styling
+    html = html.replace(/(\n\*\s.+(?:\n\*.+)*)/g, function(match) {
+        let items = match.trim().split('\n');
+        let listItems = items.map(item => `<li class="ml-4 list-disc">${item.substring(2)}</li>`).join('');
+        return `<ul class="list-outside pl-5 mt-2 mb-2">${listItems}</ul>`;
+    });
+
+    // Replace remaining line breaks with <br> tags for proper formatting, if needed
+    // Commenting out the <br> replacement as handling spacing with CSS classes or <p> tags is recommended for consistency with Tailwind's utility-first approach.
+    // html = html.replace(/\n/g, '<br>');
 
     return html;
 }
+
+
